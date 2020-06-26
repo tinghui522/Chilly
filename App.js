@@ -8,7 +8,7 @@ import { SplashScreen } from 'expo';
 import HomeScreen from './screen/HomeScreen';
 import GalleryScreen from './screen/GalleryScreen';
 import IcgmrScreen from "./screen/IcgmrScreen";
-import ChatScreen from "./screen/ChatScreen";
+import ChatScreen from "./screen/ChatScreen1";
 import CHAPTER01 from "./story/Story1";
 
 const Tab = createBottomTabNavigator();
@@ -68,11 +68,11 @@ const App = () => {
           tabBarIcon: ({ focused, color, size }) => {
             let iconPath;
 
-            if (route.name === 'Home') {
+            if (route.name === '首頁') {
               iconPath = focused
-              ? require('./assets/btn_penguin.png'):
-              require('./assets/btn_home.png');
-            } else if (route.name === 'Gallery') {
+              ? require('./assets/igloo-96.png'):
+              require('./assets/home_2.png');
+            } else if (route.name === '圖集') {
               iconPath = focused
               ? require('./assets/btn_book.png'):
               require('./assets/btn_gallery.png');
@@ -89,7 +89,7 @@ const App = () => {
             // You can return any component that you like here!
             return (
               <Image 
-                style={{width: 43, height: 43}}
+                style={{width: 45, height: 45}}
                 source={iconPath} 
               />
             );
@@ -99,7 +99,7 @@ const App = () => {
           activeTintColor: '#13EBAB',
           inactiveTintColor: '#FFFFFF',
           labelStyle: {
-            fontSize: 11,
+            fontSize: 12,
             marginTop: 0,
             padding: 0,
             fontWeight:"bold"
@@ -109,8 +109,8 @@ const App = () => {
         }}
         
       >
-        <Tab.Screen name="Home" component={JournalStack} />
-        <Tab.Screen name="Gallery" component={GalleryScreen} />
+        <Tab.Screen name="首頁" component={JournalStack} />
+        <Tab.Screen name="圖集" component={GalleryScreen} />
         <Tab.Screen name="Icgmr" component={IcgmrScreen} />
         <Tab.Screen name="Q and A" component={ChatScreen} />
       </Tab.Navigator>

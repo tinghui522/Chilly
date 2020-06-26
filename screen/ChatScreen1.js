@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from "react";
 import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,ImageBackground,SafeAreaView} from 'react-native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+const image = { uri: "https://github.com/tinghui522/Chilly/blob/master/assets/qa_bg.png?raw=true" };
 
 
 //library imports
@@ -8,7 +9,7 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 //custom components imports 
 
-const ChatScreen = ({ navigation }) => {
+const ChatScreen1 = ({ navigation }) => {
     return (
       <SafeAreaView>
       
@@ -17,13 +18,24 @@ const ChatScreen = ({ navigation }) => {
             <Text style={{color:"white",fontSize:22,fontWeight:"bold",marginLeft:178,marginTop:55}}>Chilly</Text>
            
         </View>
-        
         </View>
-       
-          
-      <ScrollView style={styles.contentStyle}>
-        <View style={styles.container0}>
+        
+        
+        <ScrollView style={{backgroundColor:"#A1C4F2"}}>
+        <View >
         <ImageBackground style={styles.qabackgroundStyle}
+              source={{
+                uri:
+                  "https://github.com/tinghui522/Chilly/blob/master/assets/qa_bg.png?raw=true"
+              }}
+            />
+            <ImageBackground style={styles.qabackgroundStyle}
+              source={{
+                uri:
+                  "https://github.com/tinghui522/Chilly/blob/master/assets/qa_bg.png?raw=true"
+              }}
+            />
+            <ImageBackground style={styles.qabackgroundStyle}
               source={{
                 uri:
                   "https://github.com/tinghui522/Chilly/blob/master/assets/qa_bg.png?raw=true"
@@ -37,13 +49,18 @@ const ChatScreen = ({ navigation }) => {
                 "https://github.com/tinghui522/Chilly/blob/master/assets/question_tite.png?raw=true"
             }}
           />
-        <Image
-          style={styles.question2Style}
-          source={{
-            uri:
-              "https://github.com/tinghui522/APPmidterm/blob/master/img/question1.png?raw=true"
-          }}
-        />
+        
+        <TouchableOpacity  onPress={() => navigation}> 
+                <View style={styles.storybox}>
+                <Image
+                    style={styles.question2Style}
+                    source={{
+                        uri:
+                        "https://github.com/tinghui522/APPmidterm/blob/master/img/question1.png?raw=true"
+                    }}
+                    />
+                </View>
+            </TouchableOpacity> 
         <Image
             style={styles.question2Style}
             source={{
@@ -76,7 +93,7 @@ const ChatScreen = ({ navigation }) => {
         </View>
         </View>
       </ScrollView>
-      
+           
       </SafeAreaView>
     )
   }
@@ -109,15 +126,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#00b49f' 
   },
   qabackgroundStyle:{
-    width:414,
-    height:700,
-    marginTop:50
+    width:418,
+    height:720,
+    marginTop:1
   },
   questiontiteStyle:{
     width:350,
     height:176,
     marginLeft:33,
-    marginTop:0
+    marginTop:-2120
   },
   question2Style:{
     width:360,
@@ -134,4 +151,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatScreen;
+export default ChatScreen1;

@@ -1,18 +1,5 @@
 import React, { Component,Fragment } from "react";
-import {
-  Text,
-  StatusBar,
-  Button,
-  StyleSheet,
-  Platform,
-  API,
-  TouchableOpacity,
-  Image,
-  View,
-  ScrollView,
-  TouchableHighlight
-} from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,SafeAreaView} from 'react-native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 
@@ -21,42 +8,10 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 //custom components imports 
 
-class IcgmrScreen extends Component {
+const IcgmrScreen = ({ navigation }) => {
   
-  static navigationOptions = {
-    drawerIcon : ({tintColor}) => (
-      <Image 
-        source={{
-          uri: "https://github.com/tinghui522/APPmidterm/blob/master/img/btn_home.png?raw=true"
-        }}
-          style = {{width:45 ,height:45,marginBottom:10,marginTop:20,tintColor:tintColor}}
-          />
-    )
-  }
-
-  state={
-    toggle:false,
-    tlist1:false
-  }
-
-  _onPress(){
-    const newState = !this.state.toggle;
-    this.setState({toggle:newState})
-  }
-
-  _list1Press(){
-    const newState = !this.state.tlist1;
-    this.setState({tlist1:newState})
-  }
-
-  render() {
-    const {toggle,tlist1} = this.state;
-    
-    const buttonBg = toggle?"#FC6068":"rgba(0,0,0,0)";
-    const textcolor = toggle?"white":"#FC6068";
-    const listcolor = tlist1?"#f0f0f0":"#f8f8f8";
     return (
-      <Fragment>
+      <SafeAreaView>
       
       <View style={{ backgroundColor: '#41627D' }}>   
         <View style={styles.container2}>
@@ -67,7 +22,7 @@ class IcgmrScreen extends Component {
       
       <ScrollView style={styles.contentStyle}>
         
-        <View style={[styles.listStyle,{backgroundColor:listcolor}]}>
+        <View>
         <View style={styles.titleStyle}>
         <View style={styles.cardContainerStyle}>
         <Image
@@ -129,12 +84,10 @@ class IcgmrScreen extends Component {
         </View>
         </View>
       </ScrollView>
-    </Fragment>  
-
+    </SafeAreaView>
     )
   }
 
-}
 
 export default IcgmrScreen;
 
@@ -156,6 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#41627D',
     width:414,
     height:100,
+    marginTop:-50
   },
   headerStyle:{
     flexDirection:"row",

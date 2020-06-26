@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from "react";
-import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,} from 'react-native';
+import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,SafeAreaView} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 import Start from "./StartScreen";
@@ -9,53 +9,21 @@ import Start from "./StartScreen";
 
 //custom components imports 
 
-class HomeScreen extends Component {
+const HomeScreen = ({ navigation }) => {
   
-  static navigationOptions = {
-    drawerIcon : ({tintColor}) => (
-      <Image 
-        source={{
-          uri: "https://github.com/tinghui522/APPmidterm/blob/master/img/btn_home.png?raw=true"
-        }}
-          style = {{width:45 ,height:45,marginBottom:10,marginTop:20,tintColor:tintColor}}
-          />
-    )
-  }
-
-  state={
-    toggle:false,
-    tlist1:false
-  }
-
-  _onPress(){
-    const newState = !this.state.toggle;
-    this.setState({toggle:newState})
-  }
-
-  _list1Press(){
-    const newState = !this.state.tlist1;
-    this.setState({tlist1:newState})
-  }
-
-  render() {
-    const {toggle,tlist1} = this.state;
-    
-    const buttonBg = toggle?"#FC6068":"rgba(0,0,0,0)";
-    const textcolor = toggle?"white":"#FC6068";
-    const listcolor = tlist1?"#f0f0f0":"#f8f8f8";
     return (
-      <Fragment>
-      
-      <View style={{ backgroundColor: '#41627D' }}>   
+      <SafeAreaView>
+    <Start></Start>
+
         <View style={styles.container2}>
             <Text style={{color:"white",fontSize:22,fontWeight:"bold",marginLeft:178,marginTop:55}}>Chilly</Text>
           
         </View>
-        </View>
+      
       
       <ScrollView style={styles.contentStyle}>
         
-        <View style={[styles.listStyle,{backgroundColor:listcolor}]}>
+        <View>
         <Swiper style={styles.wrapper} height={220} horizontal={true} autoplay={ true } showsPagination={false}>
           <View style={styles.slide1} >
             <Image style={{width:350,height:196,justifyContent:"center",alignContent:"center",marginLeft:33,marginTop:20}}
@@ -99,13 +67,13 @@ class HomeScreen extends Component {
           />
           <TouchableOpacity >
           <Image
-                style={styles.pagebotton2Style}
-                source={{
-                  uri:
-                    "https://github.com/tinghui522/APPmidterm/blob/master/img/penguin.png?raw=true"
-                }}
-              />
-              </TouchableOpacity>
+              style={styles.pagebotton2Style}
+              source={{
+                uri:
+                  "https://github.com/tinghui522/APPmidterm/blob/master/img/penguin.png?raw=true"
+              }}
+            />
+          </TouchableOpacity>
           <TouchableOpacity >
           <Image
             style={styles.pagebotton3Style}
@@ -198,22 +166,17 @@ class HomeScreen extends Component {
         </View>
        
       </ScrollView>
-    </Fragment>  
-
+    
+      </SafeAreaView>
     )
   }
 
-}
 
-export default HomeScreen;
+
+
 
 const styles = StyleSheet.create({
-  container1: {
-    flex: 0,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+ 
   container0: { flex: 1},
   contentStyle: {
     backgroundColor: "#f8f8f8",
@@ -225,6 +188,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#41627D',
     width:414,
     height:100,
+    marginTop:-50
   },
   headerStyle:{
     flexDirection:"row",
@@ -332,3 +296,5 @@ const styles = StyleSheet.create({
     marginBottom:20
   },
 });
+
+export default HomeScreen;
