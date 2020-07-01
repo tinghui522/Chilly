@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from "react";
-import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,SafeAreaView} from 'react-native';
+import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,SafeAreaView, ImageBackground,navigation} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 import Start from "./StartScreen";
@@ -12,7 +12,7 @@ import Start from "./StartScreen";
 const HomeScreen = ({ navigation }) => {
   
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
     <Start></Start>
 
         <View style={styles.container2}>
@@ -23,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
       
       <ScrollView style={styles.contentStyle}>
         
-        <View>
+        <View style={{flex:1}}>
         <Swiper style={styles.wrapper} height={220} horizontal={true} autoplay={ true } showsPagination={false}>
           <View style={styles.slide1} >
             <Image style={{width:350,height:196,justifyContent:"center",alignContent:"center",marginLeft:33,marginTop:20}}
@@ -55,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
                     "https://github.com/tinghui522/APPmidterm/blob/master/img/title_circle.png?raw=true"
                 }}
               />
-              <Text style={styles.titleStyle}>Categories</Text>
+              <Text style={styles.titleStyle}>動物介紹</Text>
 
           <View style={styles.pagebottonStyle}>
           <Image
@@ -65,21 +65,21 @@ const HomeScreen = ({ navigation }) => {
                 "https://github.com/tinghui522/APPmidterm/blob/master/img/pade_bottom5.png?raw=true"
             }}
           />
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => navigation.navigate('Penguin')}>
           <Image
               style={styles.pagebotton2Style}
               source={{
                 uri:
-                  "https://github.com/tinghui522/APPmidterm/blob/master/img/penguin.png?raw=true"
+                  "https://github.com/tinghui522/Chilly/blob/master/assets/btn1.png?raw=true"
               }}
             />
           </TouchableOpacity>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => navigation.navigate('Seal')}>
           <Image
             style={styles.pagebotton3Style}
             source={{
               uri:
-                "https://github.com/tinghui522/APPmidterm/blob/master/img/seal.png?raw=true"
+                "https://github.com/tinghui522/Chilly/blob/master/assets/btn2.png?raw=true"
             }}
           />
           </TouchableOpacity>
@@ -97,21 +97,21 @@ const HomeScreen = ({ navigation }) => {
                     "https://github.com/tinghui522/APPmidterm/blob/master/img/page_bottom6.png?raw=true"
                 }}
               />
-              <TouchableOpacity >
+              <TouchableOpacity onPress={() => navigation.navigate('Killer Whale')}>
           <Image
                 style={styles.pagebotton6Style}
                 source={{
                   uri:
-                    "https://github.com/tinghui522/APPmidterm/blob/master/img/killergull.png?raw=true"
+                    "https://github.com/tinghui522/Chilly/blob/master/assets/btn3.png?raw=true"
                 }}
               />
               </TouchableOpacity>
-              <TouchableOpacity >
+              <TouchableOpacity onPress={() => navigation.navigate('Sea Gull')}>
           <Image
                 style={styles.pagebotton7Style}
                 source={{
                   uri:
-                    "https://github.com/tinghui522/APPmidterm/blob/master/img/seagull.png?raw=true"
+                    "https://github.com/tinghui522/Chilly/blob/master/assets/btn4.png?raw=true"
                 }}
               />
               </TouchableOpacity>
@@ -124,7 +124,7 @@ const HomeScreen = ({ navigation }) => {
               />   
           </View>
         </View>
-        <View style={styles.back1Style}>
+        <View style={{flex:1}}>
             <Image
               style={styles.titlecircle1Style}
               source={{
@@ -132,34 +132,46 @@ const HomeScreen = ({ navigation }) => {
                   "https://github.com/tinghui522/APPmidterm/blob/master/img/title_circle.png?raw=true"
               }}
             />
-            <Text style={styles.title1Style}>News</Text>
-            <View style={styles.newsStyle}>
-            <TouchableOpacity>
-                <Image
+            <Text style={styles.title1Style}>最新消息</Text>
+            <View style={{flex:1}}>
+            <TouchableOpacity onPress = {() =>alert('coming soon!')}>
+                <ImageBackground
                   style={styles.news1Style}
                   source={{
                     uri:
                       "https://github.com/tinghui522/APPmidterm/blob/master/img/news_1.png?raw=true"
                   }}
-                />
+                >
+                <View style={styles.storybox}>
+                
+                </View>
+                </ImageBackground>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                <Image
+                <TouchableOpacity onPress = {() =>alert('coming soon!')}>
+                <ImageBackground
                   style={styles.news2Style}
                   source={{
                     uri:
                       "https://github.com/tinghui522/APPmidterm/blob/master/img/news_2.png?raw=true"
                   }}
-                />
+                >
+                  <View style={styles.storybox}>
+                
+                </View>
+                </ImageBackground>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                <Image
+                <TouchableOpacity onPress = {() =>alert('coming soon!')}>
+                <ImageBackground
                   style={styles.news3Style}
                   source={{
                     uri:
                       "https://github.com/tinghui522/APPmidterm/blob/master/img/news_3.png?raw=true"
                   }}
-                />
+                >
+                  <View style={styles.storybox}>
+                
+                </View>
+                </ImageBackground>
                 </TouchableOpacity>
             </View>
         </View>
@@ -176,7 +188,14 @@ const HomeScreen = ({ navigation }) => {
 
 
 const styles = StyleSheet.create({
- 
+  storybox:{
+    flexDirection:"row",
+    alignItems:"center",
+    marginTop:60,
+    marginBottom:60,
+    width:null,
+    height:null
+  },
   container0: { flex: 1},
   contentStyle: {
     backgroundColor: "#f8f8f8",
@@ -185,7 +204,7 @@ const styles = StyleSheet.create({
 
   },
   container2: {
-    backgroundColor: '#41627D',
+    backgroundColor: '#3D4A7E',
     width:414,
     height:100,
     marginTop:-50

@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from "react";
-import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,ImageBackground,SafeAreaView} from 'react-native';
+import {Text,StatusBar,Button,StyleSheet,Platform,API,TouchableOpacity,Image,View,ScrollView,TouchableHighlight,ImageBackground,SafeAreaView,Navigator} from 'react-native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import QuestionBoard from './QuestionBoard';
 
 
 //library imports
@@ -8,78 +9,65 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 //custom components imports 
 
-const ChatScreen = ({ navigation }) => {
-    return (
-      <SafeAreaView>
-      
-      <View>   
-        <View style={styles.container2}>
-            <Text style={{color:"white",fontSize:22,fontWeight:"bold",marginLeft:178,marginTop:55}}>Chilly</Text>
-           
-        </View>
-        
-        </View>
-       
-          
-      <ScrollView style={styles.contentStyle}>
-        <View style={styles.container0}>
-        <ImageBackground style={styles.qabackgroundStyle}
-              source={{
-                uri:
-                  "https://github.com/tinghui522/Chilly/blob/master/assets/qa_bg.png?raw=true"
-              }}
-            />
-            <View>
-        <Image
-            style={styles.questiontiteStyle}
-            source={{
-              uri:
-                "https://github.com/tinghui522/Chilly/blob/master/assets/question_tite.png?raw=true"
-            }}
-          />
-        <Image
-          style={styles.question2Style}
-          source={{
-            uri:
-              "https://github.com/tinghui522/APPmidterm/blob/master/img/question1.png?raw=true"
-          }}
-        />
-        <Image
-            style={styles.question2Style}
-            source={{
-              uri:
-                "https://github.com/tinghui522/APPmidterm/blob/master/img/question2.png?raw=true"
-            }}
-          />
-        
-        <Image
-            style={styles.question2Style}
-            source={{
-              uri:
-                "https://github.com/tinghui522/APPmidterm/blob/master/img/question5.png?raw=true"
-            }}
-          />
-        <Image
-            style={styles.question2Style}
-            source={{
-              uri:
-                "https://github.com/tinghui522/APPmidterm/blob/master/img/question6.png?raw=true"
-            }}
-          />
-        <Image
-            style={styles.question3Style}
-            source={{
-              uri:
-                "https://github.com/tinghui522/APPmidterm/blob/master/img/question7.png?raw=true"
-            }}
-          />
-        </View>
-        </View>
-      </ScrollView>
-      
-      </SafeAreaView>
-    )
+export default (props) => {
+  let renderScene = (route, nav) => {
+    let onBack = () => {
+      nav.pop();
+    }
+    switch (route.id) {
+      case 'simple1':
+        return <QuestionBoard onBack={onBack}/>;
+      case 'simple2':
+        return <Page2 onBack={onBack}/>;
+      case 'simple3':
+        return <Page3 onBack={onBack}/>;
+      default:
+        return (
+          <View style={styles.center}>
+            <Image
+                    style={styles.question2Style}
+                    source={{
+                        uri:
+                        "https://github.com/tinghui522/Chilly/blob/master/assets/Q1.png?raw=true"
+                    }}
+                    onPress={() => nav.push({id: 'simple1', })}
+                    />
+            
+          </View>
+        )
+    }
   }
+
+  let configureScene = (route, routeStack) => {
+    switch (route.id) {
+      case 'simple1':
+        return Navigator.SceneConfigs.VerticalDownSwipeJump
+      case 'simple2':
+        return Navigator.SceneConfigs.PushFromRight;
+      case 'simple3':
+        return Navigator.SceneConfigs.FloatFromBottom;
+      default:
+        return Navigator.SceneConfigs.PushFromRight;
+    }
+  }
+
+  return (
+    <Navigator
+      style={{ flex: 1 }}
+      initialRoute={{}}
+      configureScene={configureScene}
+      renderScene={renderScene}
+    />
+  )
+}
+
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 const styles = StyleSheet.create({
   container1: {
